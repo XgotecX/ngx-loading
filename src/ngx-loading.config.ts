@@ -34,5 +34,11 @@ export const ANIMATION_TYPES = {
     threeBounce: 'three-bounce',
     rotatingPlane: 'rotating-plane',
     rectangleBounce: 'rectangle-bounce',
-    wanderingCubes: 'wandering-cubes'
+    wanderingCubes: 'wandering-cubes',
+    circulosFade: 'circulos-fade',
+    pulse: 'pulse',
+    circlesSpinner: 'circles-spinner',
+    spinner: 'spinner',
+    cubeGrid: 'cube-grid',
+    foldingCube: 'folding-cube'
 }

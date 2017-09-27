@@ -28,6 +28,54 @@ import { ILoadingConfig, LoadingConfig, ANIMATION_TYPES } from './ngx-loading.co
                 <div class="cube1" [ngStyle]="{'background-color': loadingConfig?.primaryColour}"></div>
                 <div class="cube2" [ngStyle]="{'background-color': loadingConfig?.secondaryColour}"></div>
             </div>
+
+            <div class="circulosFade" *ngIf="getAnimationType(loadingConfig?.animationType) === ANIMATION_TYPES.circulosFade" [ngClass]="{'full-screen' : loadingConfig?.fullScreenBackdrop == true}">
+                <div class="double-bounce1" [ngStyle]="{'background-color': loadingConfig?.primaryColour}"></div>
+                <div class="double-bounce2" [ngStyle]="{'background-color': loadingConfig?.secondaryColour}"></div>
+            </div>
+
+            <div class="pulse" *ngIf="getAnimationType(loadingConfig?.animationType) === ANIMATION_TYPES.pulse" [ngStyle]="{'background-color': loadingConfig?.primaryColour}" [ngClass]="{'full-screen' : loadingConfig?.fullScreenBackdrop == true}"></div>
+
+            <div class="circles-spinner" *ngIf="getAnimationType(loadingConfig?.animationType) === ANIMATION_TYPES.circlesSpinner" [ngClass]="{'full-screen' : loadingConfig?.fullScreenBackdrop == true}">
+                <div class="dot1" [ngStyle]="{'background-color': loadingConfig?.primaryColour}"></div>
+                <div class="dot2" [ngStyle]="{'background-color': loadingConfig?.secondaryColour}"></div>
+            </div>
+
+            <div class="sk-circle" *ngIf="getAnimationType(loadingConfig?.animationType) === ANIMATION_TYPES.spinner" [ngClass]="{'full-screen' : loadingConfig?.fullScreenBackdrop == true}">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+            </div>
+
+            <div class="sk-cube-grid" *ngIf="getAnimationType(loadingConfig?.animationType) === ANIMATION_TYPES.cubeGrid" [ngClass]="{'full-screen' : loadingConfig?.fullScreenBackdrop == true}">
+                <div class="sk-cube sk-cube1" [ngStyle]="{'background-color': loadingConfig?.secondaryColour}"></div>
+                <div class="sk-cube sk-cube2" [ngStyle]="{'background-color': loadingConfig?.tertiaryColour}"></div>
+                <div class="sk-cube sk-cube3" [ngStyle]="{'background-color': loadingConfig?.tertiaryColour}"></div>
+                <div class="sk-cube sk-cube4" [ngStyle]="{'background-color': loadingConfig?.primaryColour}"></div>
+                <div class="sk-cube sk-cube5" [ngStyle]="{'background-color': loadingConfig?.secondaryColour}"></div>
+                <div class="sk-cube sk-cube6" [ngStyle]="{'background-color': loadingConfig?.tertiaryColour}"></div>
+                <div class="sk-cube sk-cube7" [ngStyle]="{'background-color': loadingConfig?.primaryColour}"></div>
+                <div class="sk-cube sk-cube8" [ngStyle]="{'background-color': loadingConfig?.primaryColour}"></div>
+                <div class="sk-cube sk-cube9" [ngStyle]="{'background-color': loadingConfig?.secondaryColour}"></div>
+            </div>
+
+            <div class="sk-folding-cube" *ngIf="getAnimationType(loadingConfig?.animationType) === ANIMATION_TYPES.foldingCube" [ngClass]="{'full-screen' : loadingConfig?.fullScreenBackdrop == true}">
+                <div class="sk-cubo1 sk-cubo"></div>
+                <div class="sk-cubo2 sk-cubo"></div>
+                <div class="sk-cubo4 sk-cubo"></div>
+                <div class="sk-cubo3 sk-cubo"></div>
+            </div>
+
+
         </div>
     `,
     styles: [
@@ -92,6 +140,457 @@ import { ILoadingConfig, LoadingConfig, ANIMATION_TYPES } from './ngx-loading.co
                     transform: scale(1.0);
                 }
             }
+
+            /* Folding Cube */
+            .sk-folding-cube {
+                width: 70px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 70px;
+                margin: auto;
+                z-index: 51;
+
+                -webkit-transform: rotateZ(45deg);
+                        transform: rotateZ(45deg);
+              }
+              
+              .sk-folding-cube .sk-cubo {
+                float: left;
+                width: 50%;
+                height: 50%;
+                position: relative;
+                -webkit-transform: scale(1.1);
+                    -ms-transform: scale(1.1);
+                        transform: scale(1.1); 
+              }
+              /* ColorHere */
+              .sk-folding-cube .sk-cubo:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #333;
+                -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+                        animation: sk-foldCubeAngle 2.4s infinite linear both;
+                -webkit-transform-origin: 100% 100%;
+                    -ms-transform-origin: 100% 100%;
+                        transform-origin: 100% 100%;
+              }
+              .sk-folding-cube .sk-cubo2 {
+                -webkit-transform: scale(1.1) rotateZ(90deg);
+                        transform: scale(1.1) rotateZ(90deg);
+              }
+              .sk-folding-cube .sk-cubo3 {
+                -webkit-transform: scale(1.1) rotateZ(180deg);
+                        transform: scale(1.1) rotateZ(180deg);
+              }
+              .sk-folding-cube .sk-cubo4 {
+                -webkit-transform: scale(1.1) rotateZ(270deg);
+                        transform: scale(1.1) rotateZ(270deg);
+              }
+              .sk-folding-cube .sk-cubo2:before {
+                -webkit-animation-delay: 0.3s;
+                        animation-delay: 0.3s;
+              }
+              .sk-folding-cube .sk-cubo3:before {
+                -webkit-animation-delay: 0.6s;
+                        animation-delay: 0.6s; 
+              }
+              .sk-folding-cube .sk-cubo4:before {
+                -webkit-animation-delay: 0.9s;
+                        animation-delay: 0.9s;
+              }
+              @-webkit-keyframes sk-foldCubeAngle {
+                0%, 10% {
+                  -webkit-transform: perspective(140px) rotateX(-180deg);
+                          transform: perspective(140px) rotateX(-180deg);
+                  opacity: 0; 
+                } 25%, 75% {
+                  -webkit-transform: perspective(140px) rotateX(0deg);
+                          transform: perspective(140px) rotateX(0deg);
+                  opacity: 1; 
+                } 90%, 100% {
+                  -webkit-transform: perspective(140px) rotateY(180deg);
+                          transform: perspective(140px) rotateY(180deg);
+                  opacity: 0; 
+                } 
+              }
+              
+              @keyframes sk-foldCubeAngle {
+                0%, 10% {
+                  -webkit-transform: perspective(140px) rotateX(-180deg);
+                          transform: perspective(140px) rotateX(-180deg);
+                  opacity: 0; 
+                } 25%, 75% {
+                  -webkit-transform: perspective(140px) rotateX(0deg);
+                          transform: perspective(140px) rotateX(0deg);
+                  opacity: 1; 
+                } 90%, 100% {
+                  -webkit-transform: perspective(140px) rotateY(180deg);
+                          transform: perspective(140px) rotateY(180deg);
+                  opacity: 0; 
+                }
+              }
+
+            /* Cube Grid */
+            .sk-cube-grid {
+                width: 70px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 70px;
+                margin: auto;
+                z-index: 51;
+
+              }
+              
+              .sk-cube-grid .sk-cube {
+                width: 33%;
+                height: 33%;
+                background-color: #333;
+                float: left;
+                -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+                        animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+              }
+              .sk-cube-grid .sk-cube1 {
+                -webkit-animation-delay: 0.2s;
+                        animation-delay: 0.2s; }
+              .sk-cube-grid .sk-cube2 {
+                -webkit-animation-delay: 0.3s;
+                        animation-delay: 0.3s; }
+              .sk-cube-grid .sk-cube3 {
+                -webkit-animation-delay: 0.4s;
+                        animation-delay: 0.4s; }
+              .sk-cube-grid .sk-cube4 {
+                -webkit-animation-delay: 0.1s;
+                        animation-delay: 0.1s; }
+              .sk-cube-grid .sk-cube5 {
+                -webkit-animation-delay: 0.2s;
+                        animation-delay: 0.2s; }
+              .sk-cube-grid .sk-cube6 {
+                -webkit-animation-delay: 0.3s;
+                        animation-delay: 0.3s; }
+              .sk-cube-grid .sk-cube7 {
+                -webkit-animation-delay: 0s;
+                        animation-delay: 0s; }
+              .sk-cube-grid .sk-cube8 {
+                -webkit-animation-delay: 0.1s;
+                        animation-delay: 0.1s; }
+              .sk-cube-grid .sk-cube9 {
+                -webkit-animation-delay: 0.2s;
+                        animation-delay: 0.2s; }
+              
+              @-webkit-keyframes sk-cubeGridScaleDelay {
+                0%, 70%, 100% {
+                  -webkit-transform: scale3D(1, 1, 1);
+                          transform: scale3D(1, 1, 1);
+                } 35% {
+                  -webkit-transform: scale3D(0, 0, 1);
+                          transform: scale3D(0, 0, 1); 
+                }
+              }
+              
+              @keyframes sk-cubeGridScaleDelay {
+                0%, 70%, 100% {
+                  -webkit-transform: scale3D(1, 1, 1);
+                          transform: scale3D(1, 1, 1);
+                } 35% {
+                  -webkit-transform: scale3D(0, 0, 1);
+                          transform: scale3D(0, 0, 1);
+                } 
+              }
+
+            /* Spinner */
+            .sk-circle {
+                width: 70px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 70px;
+                margin: auto;
+                z-index: 51;
+
+                /*
+                margin: 100px auto;
+                width: 40px;
+                height: 40px;
+                position: relative;
+                */
+
+              }
+              .sk-circle .sk-child {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+              }
+
+              /* ColorHere*/
+              .sk-circle .sk-child:before {
+                content: '';
+                display: block;
+                margin: 0 auto;
+                width: 15%;
+                height: 15%;
+                background-color: #333;
+                border-radius: 100%;
+                -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+                        animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+              }
+              .sk-circle .sk-circle2 {
+                -webkit-transform: rotate(30deg);
+                    -ms-transform: rotate(30deg);
+                        transform: rotate(30deg); }
+              .sk-circle .sk-circle3 {
+                -webkit-transform: rotate(60deg);
+                    -ms-transform: rotate(60deg);
+                        transform: rotate(60deg); }
+              .sk-circle .sk-circle4 {
+                -webkit-transform: rotate(90deg);
+                    -ms-transform: rotate(90deg);
+                        transform: rotate(90deg); }
+              .sk-circle .sk-circle5 {
+                -webkit-transform: rotate(120deg);
+                    -ms-transform: rotate(120deg);
+                        transform: rotate(120deg); }
+              .sk-circle .sk-circle6 {
+                -webkit-transform: rotate(150deg);
+                    -ms-transform: rotate(150deg);
+                        transform: rotate(150deg); }
+              .sk-circle .sk-circle7 {
+                -webkit-transform: rotate(180deg);
+                    -ms-transform: rotate(180deg);
+                        transform: rotate(180deg); }
+              .sk-circle .sk-circle8 {
+                -webkit-transform: rotate(210deg);
+                    -ms-transform: rotate(210deg);
+                        transform: rotate(210deg); }
+              .sk-circle .sk-circle9 {
+                -webkit-transform: rotate(240deg);
+                    -ms-transform: rotate(240deg);
+                        transform: rotate(240deg); }
+              .sk-circle .sk-circle10 {
+                -webkit-transform: rotate(270deg);
+                    -ms-transform: rotate(270deg);
+                        transform: rotate(270deg); }
+              .sk-circle .sk-circle11 {
+                -webkit-transform: rotate(300deg);
+                    -ms-transform: rotate(300deg);
+                        transform: rotate(300deg); }
+              .sk-circle .sk-circle12 {
+                -webkit-transform: rotate(330deg);
+                    -ms-transform: rotate(330deg);
+                        transform: rotate(330deg); }
+              .sk-circle .sk-circle2:before {
+                -webkit-animation-delay: -1.1s;
+                        animation-delay: -1.1s; }
+              .sk-circle .sk-circle3:before {
+                -webkit-animation-delay: -1s;
+                        animation-delay: -1s; }
+              .sk-circle .sk-circle4:before {
+                -webkit-animation-delay: -0.9s;
+                        animation-delay: -0.9s; }
+              .sk-circle .sk-circle5:before {
+                -webkit-animation-delay: -0.8s;
+                        animation-delay: -0.8s; }
+              .sk-circle .sk-circle6:before {
+                -webkit-animation-delay: -0.7s;
+                        animation-delay: -0.7s; }
+              .sk-circle .sk-circle7:before {
+                -webkit-animation-delay: -0.6s;
+                        animation-delay: -0.6s; }
+              .sk-circle .sk-circle8:before {
+                -webkit-animation-delay: -0.5s;
+                        animation-delay: -0.5s; }
+              .sk-circle .sk-circle9:before {
+                -webkit-animation-delay: -0.4s;
+                        animation-delay: -0.4s; }
+              .sk-circle .sk-circle10:before {
+                -webkit-animation-delay: -0.3s;
+                        animation-delay: -0.3s; }
+              .sk-circle .sk-circle11:before {
+                -webkit-animation-delay: -0.2s;
+                        animation-delay: -0.2s; }
+              .sk-circle .sk-circle12:before {
+                -webkit-animation-delay: -0.1s;
+                        animation-delay: -0.1s; }
+              
+              @-webkit-keyframes sk-circleBounceDelay {
+                0%, 80%, 100% {
+                  -webkit-transform: scale(0);
+                          transform: scale(0);
+                } 40% {
+                  -webkit-transform: scale(1);
+                          transform: scale(1);
+                }
+              }
+              
+              @keyframes sk-circleBounceDelay {
+                0%, 80%, 100% {
+                  -webkit-transform: scale(0);
+                          transform: scale(0);
+                } 40% {
+                  -webkit-transform: scale(1);
+                          transform: scale(1);
+                }
+              }
+
+            /* Circles Spinner */
+
+            .circles-spinner {
+                width: 70px;
+                height: 70px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;                
+                margin: auto;
+                z-index: 51;
+                
+                -webkit-animation: sk-rotate 2.0s infinite linear;
+                animation: sk-rotate 2.0s infinite linear;
+              }
+              
+              .dot1, .dot2 {
+                width: 60%;
+                height: 60%;
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                background-color: #333;
+                border-radius: 100%;
+                
+                -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+                animation: sk-bounce 2.0s infinite ease-in-out;
+              }
+              
+              .dot2 {
+                top: auto;
+                bottom: 0;
+                -webkit-animation-delay: -1.0s;
+                animation-delay: -1.0s;
+              }
+              
+              @-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+              @keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+              
+              @-webkit-keyframes sk-bounce {
+                0%, 100% { -webkit-transform: scale(0.0) }
+                50% { -webkit-transform: scale(1.0) }
+              }
+              
+              @keyframes sk-bounce {
+                0%, 100% { 
+                  transform: scale(0.0);
+                  -webkit-transform: scale(0.0);
+                } 50% { 
+                  transform: scale(1.0);
+                  -webkit-transform: scale(1.0);
+                }
+              }
+
+            /* Pulse */
+            .pulse {
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;                
+                margin: auto;
+                z-index: 51;
+              
+                border-radius: 100%;  
+                -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+                animation: sk-scaleout 1.0s infinite ease-in-out;
+              }
+              
+              @-webkit-keyframes sk-scaleout {
+                0% { -webkit-transform: scale(0) }
+                100% {
+                  -webkit-transform: scale(1.0);
+                  opacity: 0;
+                }
+              }
+              
+              @keyframes sk-scaleout {
+                0% { 
+                  -webkit-transform: scale(0);
+                  transform: scale(0);
+                } 100% {
+                  -webkit-transform: scale(1.0);
+                  transform: scale(1.0);
+                  opacity: 0;
+                }
+              }
+
+            /* Spinner Fade */
+
+            .circulosFade {               
+
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;                
+                margin: auto;
+                z-index: 51;
+
+              }
+              
+              .double-bounce1, .double-bounce2 {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background-color: #333;
+                opacity: 0.6;
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+                animation: sk-bounce 2.0s infinite ease-in-out;
+              }
+              
+              .double-bounce2 {
+                -webkit-animation-delay: -1.0s;
+                animation-delay: -1.0s;
+              }
+              
+              @-webkit-keyframes sk-bounce {
+                0%, 100% { -webkit-transform: scale(0.0) }
+                50% { -webkit-transform: scale(1.0) }
+              }
+              
+              @keyframes sk-bounce {
+                0%, 100% { 
+                  transform: scale(0.0);
+                  -webkit-transform: scale(0.0);
+                } 50% { 
+                  transform: scale(1.0);
+                  -webkit-transform: scale(1.0);
+                }
+              }
 
 
 
@@ -322,6 +821,24 @@ export class LoadingComponent implements OnInit {
                 break;
             case ANIMATION_TYPES.wanderingCubes:
                 animationTypeSet = ANIMATION_TYPES.wanderingCubes;
+                break;
+            case ANIMATION_TYPES.circulosFade:
+                animationTypeSet = ANIMATION_TYPES.circulosFade;
+                break;
+            case ANIMATION_TYPES.pulse:
+                animationTypeSet = ANIMATION_TYPES.pulse;
+                break;
+            case ANIMATION_TYPES.circlesSpinner:
+                animationTypeSet = ANIMATION_TYPES.circlesSpinner;
+                break;
+            case ANIMATION_TYPES.spinner:
+                animationTypeSet = ANIMATION_TYPES.spinner;
+                break;
+            case ANIMATION_TYPES.cubeGrid:
+                animationTypeSet = ANIMATION_TYPES.cubeGrid;
+                break;
+            case ANIMATION_TYPES.foldingCube:
+                animationTypeSet = ANIMATION_TYPES.foldingCube;
                 break;
             default:
                 animationTypeSet = ANIMATION_TYPES.threeBounce;
